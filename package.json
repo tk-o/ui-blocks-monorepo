@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "postinstall": "lerna bootstrap",
+    "start": "concurrently 'yarn apps:renderer' 'yarn blocks:watch'",
     "apps:renderer": "lerna run --stream --scope @apps/rendering-worker dev",
     "apps:storybook": "lerna run --stream --scope @apps/blocks-storybook storybook",
     "blocks:build": "lerna run --stream --scope @ui-blocks/core --scope @ui-blocks-standalone/* build",
@@ -22,6 +23,7 @@
     "react-dom": "^16.13.0"
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "lerna": "^3.20.2",
     "tsdx": "^0.12.3"
   }
