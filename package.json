@@ -1,10 +1,28 @@
 {
   "name": "website-services",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "author": "Tomasz Kopacki <tomasz@kopacki.net>",
   "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "ui-blocks/core",
+    "ui-blocks/standalone/*"
+  ],
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "apps:renderer": "lerna run --stream --scope @apps/rendering-worker dev",
+    "apps:storybook": "lerna run --stream --scope @apps/blocks-storybook storybook",
+    "blocks:build": "lerna run --stream --scope @ui-blocks/core --scope @ui-blocks-standalone/* build",
+    "blocks:watch": "lerna run --parallel --scope @ui-blocks/core --scope @ui-blocks-standalone/* start"
+  },
+  "dependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^3.20.2",
+    "tsdx": "^0.12.3"
   }
 }

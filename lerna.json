@@ -1,0 +1,10 @@
+{
+  "packages": [
+    "apps/*",
+    "ui-blocks/core",
+    "ui-blocks/standalone/*"
+  ],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true
+}
